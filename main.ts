@@ -24,6 +24,7 @@ function 距離を測る () {
         DigitalPin.P1,
         PingUnit.Centimeters
         )
+        basic.pause(200)
     }
     led.plotBarGraph(
     距離,
