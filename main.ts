@@ -5,7 +5,10 @@ function 左回転 () {
     pins.analogWritePin(AnalogPin.P16, 0)
 }
 input.onButtonPressed(Button.A, function () {
-    電源 = 1
+    電源 += 1
+    if (電源 == 2) {
+        電源 = 0
+    }
 })
 function バック () {
     pins.analogWritePin(AnalogPin.P12, 0)
@@ -41,9 +44,6 @@ function 右回転 () {
     pins.analogWritePin(AnalogPin.P15, 0)
     pins.analogWritePin(AnalogPin.P16, スピード + バランス)
 }
-input.onButtonPressed(Button.B, function () {
-    電源 = 0
-})
 function 停止 () {
     pins.analogWritePin(AnalogPin.P12, 0)
     pins.analogWritePin(AnalogPin.P13, 0)
@@ -56,7 +56,12 @@ let スピード = 0
 let 電源 = 0
 電源 = 0
 スピード = 500
-バランス = 50
+バランス = 0
+pins.servoWritePin(AnalogPin.P2, 0)
+basic.pause(200)
+pins.servoWritePin(AnalogPin.P2, 180)
+basic.pause(200)
+pins.servoWritePin(AnalogPin.P2, 90)
 停止()
 basic.forever(function () {
     while (電源 == 1) {
