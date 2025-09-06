@@ -8,6 +8,7 @@ input.onButtonPressed(Button.A, function () {
     電源 += 1
     if (電源 == 2) {
         電源 = 0
+        停止()
     }
 })
 function バック () {
@@ -59,10 +60,11 @@ let 電源 = 0
 スピード = 500
 バランス = 0
 pins.servoWritePin(AnalogPin.P2, 0)
-basic.pause(200)
+basic.pause(1000)
 pins.servoWritePin(AnalogPin.P2, 180)
-basic.pause(200)
+basic.pause(1000)
 pins.servoWritePin(AnalogPin.P2, 90)
+basic.pause(1000)
 停止()
 basic.forever(function () {
     while (電源 == 1) {
@@ -74,6 +76,7 @@ basic.forever(function () {
         } else {
             停止()
         }
+        basic.pause(200)
     }
     停止()
 })
