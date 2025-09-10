@@ -9,6 +9,7 @@ input.onButtonPressed(Button.A, function () {
     if (電源 == 2) {
         電源 = 0
         停止()
+        basic.clearScreen()
     }
 })
 function バック () {
@@ -59,13 +60,13 @@ let 電源 = 0
 電源 = 0
 スピード = 500
 バランス = 0
+停止()
 pins.servoWritePin(AnalogPin.P2, 0)
 basic.pause(1000)
 pins.servoWritePin(AnalogPin.P2, 180)
 basic.pause(1000)
 pins.servoWritePin(AnalogPin.P2, 90)
 basic.pause(1000)
-停止()
 basic.forever(function () {
     while (電源 == 1) {
         距離を測る()
@@ -79,4 +80,5 @@ basic.forever(function () {
         basic.pause(200)
     }
     停止()
+    basic.clearScreen()
 })
